@@ -1,6 +1,6 @@
 # Afro Food DB
 
-Afro Food DB is an open-source database and public API of African recipes, starting with Cameroonian dishes. It is built to serve two audiences at once: cooks who want accurate, well-sourced recipes, and developers who want a clean, well-documented API to build on.
+Afro Food DB is an open-source database and public API of African recipes. It is built to serve two audiences at once: cooks who want accurate, well-sourced recipes, and developers who want a clean, well-documented API to build on.
 
 ## Status
 
@@ -148,6 +148,6 @@ Recipes are contributed as YAML files under `data/` via pull request. CI validat
 This project uses two different licenses to cover the source code and the community-contributed data:
 
 - **Source code:** all software code is licensed under the [MIT License](LICENSE).
-- **Food data:** all YAML data files, database schemas, and seeded data are licensed under the [Creative Commons Attribution 4.0 International (CC-BY-4.0) License](LICENSE-DATA).
+- **Food data:** all YAML data files and seeded data are licensed under the [Creative Commons Attribution 4.0 International (CC-BY-4.0) License](LICENSE-DATA).
 
 By contributing data to this project (via pull requests, issues, or forms), you agree to release your contributions under the CC-BY-4.0 License.
