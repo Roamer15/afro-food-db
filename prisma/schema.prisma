@@ -1,0 +1,157 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum SubstituteQuality {
+  ideal
+  good
+  acceptable
+  last_resort
+}
+
+enum Difficulty {
+  easy
+  medium
+  hard
+}
+
+enum NoteType {
+  substitution
+  pairing
+  make_ahead
+  general
+}
+
+model Recipe {
+  id                String             @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  slug              String             @unique
+  title             String
+  description       String             @db.VarChar(220)
+  region            String?
+  servings          Int
+  prepTime          Int                @map("prep_time")
+  cookTime          Int                @map("cook_time")
+  difficulty        Difficulty?
+  imageUrl          String?            @map("image_url")
+  imageAlt          String?            @map("image_alt")
+  videoUrl          String?            @map("video_url")
+  cuisineTags       String[]           @map("cuisine_tags")
+  author            String
+  sourceUrl         String?            @map("source_url")
+  tags              RecipeTag[]
+  createdAt         DateTime           @default(now()) @map("created_at")
+  updatedAt         DateTime           @updatedAt() @map("updated_at")
+  recipeSteps       RecipeStep[]
+  recipeIngredients RecipeIngredient[]
+  recipeNotes       RecipeNote[]
+
+  @@index([region])
+  @@map("recipes")
+}
+
+model Ingredient {
+  id                String                 @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name              String                 @unique
+  category          String
+  substitutes       IngredientSubstitute[] @relation("SubstitutesFor")
+  substituteFor     IngredientSubstitute[] @relation("SubstitutedBy")
+  createdAt         DateTime               @default(now()) @map("created_at")
+  ingredientAlias   IngredientAlias[]
+  recipeIngredients RecipeIngredient[]
+
+  @@map("ingredients")
+}
+
+model IngredientAlias {
+  id           String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  alias        String     @unique
+  ingredientId String     @map("ingredient_id") @db.Uuid
+  ingredient   Ingredient @relation(fields: [ingredientId], references: [id], onDelete: Cascade)
+
+  @@index([ingredientId])
+  @@map("ingredient_aliases")
+}
+
+model RecipeStep {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  stepNumber Int      @map("step_number")
+  title      String?
+  actions    String[]
+  recipeId   String   @map("recipe_id") @db.Uuid
+  recipe     Recipe   @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@unique([recipeId, stepNumber])
+  @@map("recipe_steps")
+}
+
+model IngredientSubstitute {
+  id              String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  quality         SubstituteQuality @default(good)
+  notes           String?
+  isBidirectional Boolean           @default(false) @map("is_bidirectional")
+  ingredientId    String            @map("ingredient_id") @db.Uuid
+  substituteId    String            @map("substitute_id") @db.Uuid
+  ingredient      Ingredient        @relation("SubstitutesFor", fields: [ingredientId], references: [id], onDelete: Cascade)
+  substitute      Ingredient        @relation("SubstitutedBy", fields: [substituteId], references: [id], onDelete: Cascade)
+
+  @@unique([ingredientId, substituteId])
+  @@index([substituteId])
+  @@map("ingredient_substitutes")
+}
+
+model Tag {
+  id      String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title   String      @unique
+  recipes RecipeTag[]
+
+  @@map("tags")
+}
+
+model RecipeTag {
+  recipeId String @map("recipe_id") @db.Uuid
+  tagId    String @map("tag_id") @db.Uuid
+
+  recipe Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  tag    Tag    @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([recipeId, tagId])
+  @@index([tagId])
+  @@map("recipe_tags")
+}
+
+model RecipeIngredient {
+  id           String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  recipeId     String     @map("recipe_id") @db.Uuid
+  recipe       Recipe     @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  ingredientId String     @map("ingredient_id") @db.Uuid
+  ingredient   Ingredient @relation(fields: [ingredientId], references: [id])
+  quantity     Decimal?   @db.Decimal(10, 2)
+  unit         String?
+  isOptional   Boolean    @default(false) @map("is_optional")
+  notes        String?
+
+  @@unique([recipeId, ingredientId])
+  @@index([ingredientId])
+  @@map("recipe_ingredients")
+}
+
+model RecipeNote {
+  id       String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  recipeId String   @map("recipe_id") @db.Uuid
+  recipe   Recipe   @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  note     String
+  noteType NoteType @default(general) @map("note_type")
+
+  @@index([recipeId])
+  @@map("recipe_notes")
+}
