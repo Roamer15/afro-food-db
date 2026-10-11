@@ -14,9 +14,20 @@ const DATA = 'data';
 
 // Parse a YAML file and validate it; record problems instead of throwing.
 function load<T extends z.ZodType>(file: string, schema: T): z.infer<T> | null {
+  let text: string;
+  try {
+    text = readFileSync(file, 'utf8');
+  } catch (e) {
+    const message =
+      (e as NodeJS.ErrnoException).code === 'ENOENT'
+        ? 'File not found'
+        : `Cannot read file: ${(e as Error).message}`;
+    problems.push({ file, message });
+    return null;
+  }
   let raw: unknown;
   try {
-    raw = parse(readFileSync(file, 'utf8'));
+    raw = parse(text);
   } catch (e) {
     problems.push({ file, message: `Invalid YAML: ${(e as Error).message}` });
     return null;
@@ -33,9 +44,18 @@ function load<T extends z.ZodType>(file: string, schema: T): z.infer<T> | null {
 }
 
 function yamlFiles(dir: string): string[] {
-  return readdirSync(dir, { recursive: true, encoding: 'utf8' })
-    .filter((f) => f.endsWith('.yaml'))
-    .map((f) => join(dir, f));
+  let entries: string[];
+  try {
+    entries = readdirSync(dir, { recursive: true, encoding: 'utf8' });
+  } catch (e) {
+    const message =
+      (e as NodeJS.ErrnoException).code === 'ENOENT'
+        ? 'Missing directory'
+        : `Cannot read directory: ${(e as Error).message}`;
+    problems.push({ file: dir, message });
+    return [];
+  }
+  return entries.filter((f) => f.endsWith('.yaml')).map((f) => join(dir, f));
 }
 
 // 1. Ingredients: map every name and alias to its canonical name.
@@ -92,7 +112,7 @@ for (const file of yamlFiles(join(DATA, 'recipes'))) {
     used.add(canonical);
   }
 
-  // TODO: every tag in recipe.tags must exist in `tags`
+  // Every tag in recipe.tags must exist in `tags`.
   for (const tag of recipe.tags) {
     if (!tags.has(tag)) {
       problems.push({
@@ -103,9 +123,6 @@ for (const file of yamlFiles(join(DATA, 'recipes'))) {
   }
 }
 
-// 4. Substitutes
-// TODO: load data/substitutes.yaml with IngredientSubstituteFileSchema;
-// both `ingredient` and `substitute` must resolve through `lookup`
 // 4. Substitutes
 const subsFile = join(DATA, 'substitutes.yaml');
 for (const sub of load(subsFile, IngredientSubstituteFileSchema) ?? []) {

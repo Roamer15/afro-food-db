@@ -1,0 +1,4 @@
+# Error 6: "bitterleaf" is an alias of "ndole leaves", so both sides resolve to the same ingredient
+- ingredient: bitterleaf
+  substitute: ndole leaves
+  quality: good

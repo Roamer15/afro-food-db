@@ -1,0 +1,6 @@
+# Error 1: invalid YAML (unclosed flow sequence)
+slug: broken-syntax
+title: Broken Syntax
+tags: [main-course, stew
+ingredients:
+  - name: salt

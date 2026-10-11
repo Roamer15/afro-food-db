@@ -1,0 +1,4 @@
+# Error 10: alias "onions" is already an alias of "onion" in a-base.yaml
+- name: shallot
+  category: vegetable
+  aliases: [onions]
