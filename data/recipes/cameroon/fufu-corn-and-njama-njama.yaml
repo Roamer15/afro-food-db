@@ -1,0 +1,60 @@
+slug: fufu-corn-and-njama-njama
+title: Fufu Corn and Njama Njama
+description: Northwest Cameroon's signature plate. Smooth corn fufu turned over the heat and served with njama njama, huckleberry greens braised with tomatoes, onion and palm oil.
+country: Cameroon
+region: North West
+servings: 4
+prep_time: 20
+cook_time: 40
+difficulty: medium
+author: Afro Food DB contributors
+source_url: https://afrifoodnetwork.com/recipes/soup-stew-recipes/njama-njama/
+tags: [main-course, spicy, boiled, braised, dairy-free]
+ingredients:
+  - { name: corn flour, quantity: 500, unit: g, notes: fine ground }
+  - { name: water, quantity: 2, unit: l, notes: for the fufu }
+  - { name: njama njama, quantity: 4, unit: bunch, notes: "picked, washed and tough stems removed" }
+  - { name: tomato, quantity: 4, unit: piece, notes: "roma, diced" }
+  - { name: onion, quantity: 1, unit: piece, notes: "small, sliced into julienne" }
+  - { name: scotch bonnet, quantity: 2, unit: piece, notes: left whole with the stalks on }
+  - { name: palm oil, quantity: 45, unit: ml, notes: for the greens }
+  - { name: stock cube, quantity: 1, unit: cube }
+  - { name: salt, quantity: 1, unit: tsp, notes: to taste }
+steps:
+  - title: Prepare the greens
+    actions:
+      - Pick over the njama njama, discarding grass, dirt, hard stems and any yellow or rotten leaves.
+      - Rinse in cold water two or three times, then remove the large tough veins and slice the leaves.
+  - title: Blanch the greens
+    actions:
+      - Bring a large pot of water to the boil, add the greens and cook for 7 to 10 minutes until just tender.
+      - Drain, cool under cold water, then squeeze out as much liquid as you can and set aside.
+  - title: Build the tomato base
+    actions:
+      - Simmer the onion and diced tomatoes gently in a wide pan over medium heat.
+      - Add the whole scotch bonnets and cook for about 10 minutes, until the tomatoes collapse into a chunky sauce.
+  - title: Finish the njama njama
+    actions:
+      - Add the palm oil and fry for 3 to 5 minutes, then lift out the peppers and reserve them.
+      - Season with the stock cube and salt, seasoning a little heavily since the greens will absorb it.
+      - Stir in the greens and cook for 4 to 5 minutes, then adjust the salt.
+  - title: Start the fufu
+    actions:
+      - Bring the water to the boil, then carefully set aside about a third of it in a heatproof jug.
+      - Mix a cupful of the corn flour with cold water to a smooth, pourable slurry and stir it into the boiling water.
+  - title: Turn the fufu
+    actions:
+      - Add the remaining corn flour in two batches, stirring hard with a wooden spoon after each; the dough stiffens quickly.
+      - Pour in half the reserved hot water, cover and steam for 5 minutes over medium heat.
+      - Uncover and knead vigorously with the spoon for about 5 minutes, adding more hot water a little at a time, until smooth and elastic.
+  - title: Serve
+    actions:
+      - Scoop the fufu into portions and wrap in plastic wrap or warmed banana leaves to shape them.
+      - Serve hot with the njama njama and the reserved peppers on the side.
+notes:
+  - note: Traditionally eaten with kati kati, grilled chicken in a tomato sauce, or with boiled plantain.
+    note_type: pairing
+  - note: Njama njama is hard to find outside Cameroon. Turnip greens are the closest stand-in; collard greens or spinach also work, though spinach is much milder.
+    note_type: substitution
+  - note: Use hot water for the fufu, not cold. It keeps the temperature even while you turn it and gives a smoother dough.
+    note_type: general

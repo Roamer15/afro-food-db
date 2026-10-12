@@ -40,3 +40,6 @@
 - name: water
   category: liquid
   aliases: []
+- name: corn flour
+  category: grain
+  aliases: []
