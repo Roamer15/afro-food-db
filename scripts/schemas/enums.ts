@@ -5,6 +5,21 @@ const hyphenToUnderscore = (v: unknown) =>
 
 export const DifficultySchema = z.enum(['easy', 'medium', 'hard']);
 
+export const UnitSchema = z.enum([
+  'g',
+  'kg',
+  'ml',
+  'l',
+  'tsp',
+  'tbsp',
+  'cup',
+  'piece',
+  'clove',
+  'cube',
+  'stalk',
+  'pinch',
+]);
+
 export const SubstituteQualitySchema = z.preprocess(
   hyphenToUnderscore,
   z.enum(['ideal', 'good', 'acceptable', 'last_resort']),

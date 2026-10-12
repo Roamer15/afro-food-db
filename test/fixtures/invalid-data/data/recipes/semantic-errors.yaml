@@ -2,6 +2,7 @@
 slug: semantic-errors
 title: Semantic Errors
 description: Unknown ingredient, unknown tag and a duplicate ingredient via alias.
+country: Testland
 servings: 2
 prep_time: 5
 cook_time: 10

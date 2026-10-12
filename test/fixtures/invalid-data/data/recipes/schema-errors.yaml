@@ -2,6 +2,7 @@
 slug: Ndole_Special          # 4: uppercase and underscore
 title: Schema Errors
 description: Has a bad slug, an unknown key and a zero cook time.
+country: Testland
 servings: 2
 prep_time: 5
 cook_time: 0                 # 9: must be positive

@@ -2,6 +2,7 @@
 slug: dup-slug
 title: Duplicate Slug a
 description: A valid recipe whose slug is shared with another recipe file.
+country: Testland
 servings: 2
 prep_time: 5
 cook_time: 10

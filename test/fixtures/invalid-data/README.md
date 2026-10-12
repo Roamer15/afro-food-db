@@ -1,6 +1,6 @@
 # Invalid data fixture
 
-A deliberately broken copy of the `data/` layout. One validator run surfaces all 10 errors below.
+A deliberately broken copy of the `data/` layout. One validator run surfaces all 12 errors below.
 
 ## Running it
 
@@ -13,7 +13,7 @@ current working directory. Running the validator from this folder therefore poin
 cd test/fixtures/invalid-data && ../../../node_modules/.bin/tsx ../../../scripts/validate.ts
 ```
 
-Expect exit code 1 and `10 problem(s) found.`
+Expect exit code 1 and `12 problem(s) found.`
 
 For comparison, `bun run validate` from the repository root checks the real `data/` and passes.
 
@@ -26,7 +26,11 @@ Recipe-level cross-checks (errors 2, 5, 7) only run when a recipe passes schema 
 `load()` returns `null` on schema failure and the file is skipped. That is why the schema errors
 (4, 8, 9) live in a different file from the semantic ones.
 
-## The ten errors
+The four pre-existing recipe fixtures (`dup-slug-a`, `dup-slug-b`, `schema-errors`,
+`semantic-errors`) carry `country: Testland` because `country` is a required field: leaving it out
+would make `validate.ts` skip the file and hide the semantic errors they exist to test.
+
+## The twelve errors
 
 Paths are relative to `test/fixtures/invalid-data/`. Messages below are verbatim from a real run.
 
@@ -42,6 +46,8 @@ Paths are relative to `test/fixtures/invalid-data/`. Messages below are verbatim
 | 8 | Unknown key (`.strict()`) | `data/recipes/schema-errors.yaml` | `(root): Unrecognized key: "prep_notes"` |
 | 9 | `cook_time: 0` | `data/recipes/schema-errors.yaml` | `cook_time: Cook time must be positive` |
 | 10 | Alias defined in two ingredient files | `data/ingredients/b-extra.yaml` | `"onions" is already defined (refers to "onion")` |
+| 11 | Unit not in `UnitSchema` | `data/recipes/invalid-unit.yaml` | `ingredients.0.unit: Invalid option: expected one of "g"\|"kg"\|"ml"\|"l"\|"tsp"\|"tbsp"\|"cup"\|"piece"\|"clove"\|"cube"\|"stalk"\|"pinch"` |
+| 12 | Missing required `country` | `data/recipes/missing-country.yaml` | `country: Invalid input: expected string, received undefined` |
 
 Error 6 is caught by `validate.ts`, not by the Zod schema: `IngredientSubstituteSchema`'s
 `.refine()` compares the raw strings, so `bitterleaf` vs `ndole leaves` passes it and only the

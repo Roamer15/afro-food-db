@@ -1,0 +1,14 @@
+# Error 11: "handful" is not a member of UnitSchema
+slug: invalid-unit
+title: Invalid Unit
+description: Uses a unit that is not in the allowed list.
+country: Testland
+servings: 2
+prep_time: 5
+cook_time: 10
+author: Fixture
+tags: [main-course]
+ingredients:
+  - { name: salt, quantity: 1, unit: handful }
+steps:
+  - actions: [Stir the salt into water.]

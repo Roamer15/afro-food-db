@@ -37,6 +37,7 @@ model Recipe {
   slug              String             @unique
   title             String
   description       String             @db.VarChar(220)
+  country           String
   region            String?
   servings          Int
   prepTime          Int                @map("prep_time")
@@ -56,6 +57,7 @@ model Recipe {
   recipeNotes       RecipeNote[]
 
   @@index([region])
+  @@index([country])
   @@map("recipes")
 }
 
