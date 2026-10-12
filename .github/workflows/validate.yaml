@@ -1,11 +1,16 @@
 name: Validate data
 
 on:
-  pull_request::
+  pull_request:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   validate:
@@ -14,9 +19,9 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
-        with: 
-          node-version:  24.21.0
-        
+        with:
+          node-version: 24
+
       - uses: oven-sh/setup-bun@v2
 
       - name: Install dependencies
@@ -25,9 +30,21 @@ jobs:
       - name: Validate data
         run: bun run validate
 
+      # Guards the validator itself: the fixtures in test/fixtures/invalid-data are
+      # deliberately broken, so a passing run here means the validator has stopped
+      # catching things. NO_ANNOTATIONS keeps these expected failures from showing up
+      # as error annotations on the pull request.
       - name: Validator rejects invalid fixtures
+        env:
+          NO_ANNOTATIONS: '1'
         run: |
-          if bun run validate -- test/fixtures/invalid-data/data; then
-            echo "Expected the invalid fxtures to fail validation, but they passed"
+          if output=$(bun run validate -- test/fixtures/invalid-data/data 2>&1); then
+            echo "Expected the invalid fixtures to fail validation, but they passed."
+            echo "$output"
+            exit 1
+          fi
+          echo "$output"
+          if ! grep -qF '12 problem(s) found.' <<<"$output"; then
+            echo "Expected exactly 12 problems from the fixtures."
             exit 1
           fi

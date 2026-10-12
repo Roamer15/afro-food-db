@@ -12,6 +12,15 @@ type Problem = { file: string; message: string };
 const problems: Problem[] = [];
 const DATA = process.argv[2] ?? 'data';
 
+// GitHub workflow commands end at a newline, so a multi-line message would be
+// truncated and its remainder dumped into the log as loose text.
+const escapeData = (s: string) =>
+  s.replace(/%/g, '%25').replace(/\r/g, '%0D').replace(/\n/g, '%0A');
+
+// Property values additionally need ':' and ',' encoded, since those are separators.
+const escapeProp = (s: string) =>
+  escapeData(s).replace(/:/g, '%3A').replace(/,/g, '%2C');
+
 // Parse a YAML file and validate it; record problems instead of throwing.
 function load<T extends z.ZodType>(file: string, schema: T): z.infer<T> | null {
   let text: string;
@@ -130,10 +139,16 @@ for (const sub of load(subsFile, IngredientSubstituteFileSchema) ?? []) {
   const to = lookup.get(sub.substitute);
 
   if (!from) {
-    problems.push({ file: subsFile, message: `unknown ingredient "${sub.ingredient}"` });
+    problems.push({
+      file: subsFile,
+      message: `unknown ingredient "${sub.ingredient}"`,
+    });
   }
   if (!to) {
-    problems.push({ file: subsFile, message: `unknown substitute "${sub.substitute}"` });
+    problems.push({
+      file: subsFile,
+      message: `unknown substitute "${sub.substitute}"`,
+    });
   }
   if (from && to && from === to) {
     problems.push({
@@ -145,7 +160,15 @@ for (const sub of load(subsFile, IngredientSubstituteFileSchema) ?? []) {
 
 // Report
 if (problems.length > 0) {
-  for (const p of problems) console.error(`✗ ${p.file}: ${p.message}`);
+  const annotate =
+    process.env.GITHUB_ACTIONS === 'true' && process.env.NO_ANNOTATIONS !== '1';
+  for (const p of problems) {
+    if (annotate)
+      console.log(
+        `::error file=${escapeProp(p.file)},title=Data validation::${escapeData(p.message)}`,
+      );
+    console.error(`✗ ${p.file}: ${p.message}`);
+  }
   console.error(`\n${problems.length} problem(s) found.`);
   process.exit(1);
 }
