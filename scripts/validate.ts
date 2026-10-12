@@ -10,7 +10,7 @@ import { IngredientSubstituteFileSchema } from './schemas/substitute.schema.js';
 
 type Problem = { file: string; message: string };
 const problems: Problem[] = [];
-const DATA = 'data';
+const DATA = process.argv[2] ?? 'data';
 
 // Parse a YAML file and validate it; record problems instead of throwing.
 function load<T extends z.ZodType>(file: string, schema: T): z.infer<T> | null {
