@@ -146,10 +146,10 @@ bun run validate
 
 The check covers more than shape. Every recipe ingredient and tag must resolve against the files in `data/`, slugs must be unique, aliases must not collide, and an ingredient cannot substitute for itself. The validator prints one line per problem naming the file and field, and exits non-zero if it finds any. Run it before opening a pull request; CI runs it on every PR.
 
-`test/fixtures/invalid-data/` is a deliberately broken copy of the data used to check that the validator still catches each class of error. The validator resolves its data root as the relative path `data`, so you point it at the fixtures by changing directory:
+`test/fixtures/invalid-data/` is a deliberately broken copy of the data used to check that the validator still catches each class of error. Point the validator at it by passing the data directory as the first argument:
 
 ```bash
-cd test/fixtures/invalid-data && ../../../node_modules/.bin/tsx ../../../scripts/validate.ts
+bun run validate -- test/fixtures/invalid-data/data
 ```
 
 It should report 12 problems. See that folder's README.md for the full list.

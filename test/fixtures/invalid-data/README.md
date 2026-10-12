@@ -4,13 +4,9 @@ A deliberately broken copy of the `data/` layout. One validator run surfaces all
 
 ## Running it
 
-`scripts/validate.ts` resolves its data root as the **relative** path `data`, so it reads from the
-current working directory. Running the validator from this folder therefore points it at
-`test/fixtures/invalid-data/data/` with no change to the script:
-
 ```bash
 # from the repository root
-cd test/fixtures/invalid-data && ../../../node_modules/.bin/tsx ../../../scripts/validate.ts
+bun run validate -- test/fixtures/invalid-data/data
 ```
 
 Expect exit code 1 and `12 problem(s) found.`
