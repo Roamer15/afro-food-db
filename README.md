@@ -12,6 +12,7 @@ This project is in early development (Phase 1). The database schema and API are 
 - Node.js
 - Bun (package manager and script runner)
 - PostgreSQL
+- Prisma (ORM)
 - Zod (validation)
 - Docker Compose (local database only)
 - GitHub Actions (CI)
@@ -73,7 +74,18 @@ This project is in early development (Phase 1). The database schema and API are 
 
    **Warning:** `docker compose down -v` also deletes the `afro_food_data` volume, permanently erasing your local database contents.
 
-5. Run the API.
+5. Set up the database schema.
+
+   ```bash
+   bunx prisma migrate dev
+   bunx prisma generate
+   ```
+
+   The first command applies every migration in `prisma/migrations/` to the running container. The second writes the Prisma client to `src/generated/prisma`.
+
+   Run both. `migrate dev` does not reliably generate the client on its own — when the database is already in sync it reports "Already in sync" and exits without generating anything. The client is gitignored and must exist before the API will build, so this step is required on a fresh clone, not optional. `bunx prisma generate` on its own is also what you want after pulling a branch that changed `schema.prisma` but no migrations.
+
+6. Run the API.
 
    ```bash
    bun run start:dev
@@ -82,6 +94,21 @@ This project is in early development (Phase 1). The database schema and API are 
    This runs the API natively on Node — not in Docker — in watch mode, and serves it at `http://localhost:3000` by default (override with the `PORT` environment variable).
 
 Only the database is containerized for now. This keeps local development close to production for the one piece of state that matters, while leaving the API itself fast to iterate on and debug directly on the host.
+
+## Working with the database
+
+The schema lives in `prisma/schema.prisma` and is managed with Prisma 7 (configured in `prisma7.config.ts` at the repo root). These are the commands you will use most:
+
+```bash
+bunx prisma migrate dev --name <name>   # create and apply a migration after editing schema.prisma
+bunx prisma migrate status              # check whether the database matches the migration history
+bunx prisma generate                    # regenerate the client only
+bunx prisma studio                      # browse the data in a local GUI
+```
+
+**Warning:** `bunx prisma migrate reset` drops the entire database and replays every migration. Use it in development only, and never against anything you care about.
+
+Note that `prisma/migrations/20261009115041_add_check_constraints/migration.sql` is hand-written, because Prisma cannot express CHECK constraints in the schema. It adds the `no_self_substitute` constraint on `ingredient_substitutes`, so if a future migration drops and recreates that table, the constraint must be re-added.
 
 ## Available scripts
 
@@ -99,6 +126,7 @@ Only the database is containerized for now. This keeps local development close t
 | `bun run test:cov` | Run unit tests with coverage |
 | `bun run test:debug` | Run unit tests with the debugger attached |
 | `bun run test:e2e` | Run end-to-end tests |
+| `bun run validate` | Validate every YAML file in `data/` |
 
 ## Running tests
 
@@ -108,22 +136,44 @@ bun run test:e2e
 bun run test:cov
 ```
 
+## Validating the data files
+
+Every YAML file in `data/` is checked against the Zod schemas in `scripts/schemas/` by:
+
+```bash
+bun run validate
+```
+
+The check covers more than shape. Every recipe ingredient and tag must resolve against the files in `data/`, slugs must be unique, aliases must not collide, and an ingredient cannot substitute for itself. The validator prints one line per problem naming the file and field, and exits non-zero if it finds any. Run it before opening a pull request; CI runs it on every PR.
+
+`test/fixtures/invalid-data/` is a deliberately broken copy of the data used to check that the validator still catches each class of error. The validator resolves its data root as the relative path `data`, so you point it at the fixtures by changing directory:
+
+```bash
+cd test/fixtures/invalid-data && ../../../node_modules/.bin/tsx ../../../scripts/validate.ts
+```
+
+It should report 12 problems. See that folder's README.md for the full list.
+
 ## Project structure
 
 ```
-src/                    NestJS application source
-test/                   Tests
-data/                   Recipe and ingredient data (not yet populated)
-  ingredients/          Canonical ingredients with their aliases
-  substitutes.yaml      Ingredient substitution rules
-  tags.yaml             Recipe tags
-  recipes/
-    cameroon/
-      ndole.yaml         Example recipe (planned)
-docker-compose.yaml     Local PostgreSQL database
+src/                              NestJS application source
+  generated/prisma/               generated Prisma client (gitignored)
+prisma/
+  schema.prisma                   database schema
+  migrations/                     migration history
+scripts/
+  validate.ts                     validates everything in data/
+  schemas/                        Zod schemas (recipe, ingredient, substitute, tag, enums)
+data/
+  ingredients/                    proteins.yaml, vegetables.yaml, pantry.yaml
+  tags.yaml
+  substitutes.yaml
+  recipes/cameroon/               ndole.yaml, poulet-dg.yaml, puff-puff.yaml
+test/
+  fixtures/invalid-data/          deliberately broken data used to exercise the validator
+docker-compose.yaml               local PostgreSQL database
 ```
-
-`data/` currently exists but is empty; the layout above reflects the planned structure, not what's there today.
 
 ## API (planned / roadmap)
 
@@ -141,7 +191,7 @@ Nothing below is implemented yet — it describes where the project is headed. A
 
 ## Contributing
 
-Recipes are contributed as YAML files under `data/` via pull request. CI validates every PR against the expected schema, and merging to `main` resyncs the PostgreSQL database from the data files. A `CONTRIBUTING.md` with detailed guidelines is coming; until then, open a PR and we'll work through it together.
+Recipes are contributed as YAML files under `data/` via pull request. CI validates every PR against the expected schema, and merging to `main` resyncs the PostgreSQL database from the data files. A `CONTRIBUTING.md` with detailed guidelines is coming; until then, open a PR and we'll work through it together. Please run `bun run validate` locally before opening a pull request, since CI runs the same check.
 
 ## License
 
