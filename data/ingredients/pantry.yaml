@@ -1,0 +1,42 @@
+- name: groundnuts
+  category: seed
+  aliases: [peanuts, arachide]
+- name: egusi
+  category: seed
+  aliases: [melon seeds]
+- name: palm oil
+  category: oil_fat
+  aliases: [red oil]
+- name: vegetable oil
+  category: oil_fat
+  aliases: []
+- name: groundnut oil
+  category: oil_fat
+  aliases: [peanut oil]
+- name: salt
+  category: seasoning
+  aliases: []
+- name: stock cube
+  category: seasoning
+  aliases: [maggi, bouillon cube]
+- name: ginger
+  category: spice
+  aliases: []
+- name: white pepper
+  category: spice
+  aliases: []
+- name: nutmeg
+  category: spice
+  aliases: []
+- name: flour
+  category: grain
+  aliases: [wheat flour, all-purpose flour]
+- name: sugar
+  category: other
+  aliases: [granulated sugar]
+- name: yeast
+  category: other
+  aliases: [dry yeast, instant yeast]
+- name: water
+  category: liquid
+  aliases: []

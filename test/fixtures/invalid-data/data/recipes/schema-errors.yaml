@@ -1,0 +1,14 @@
+# Errors 4, 8, 9: three schema-level failures in one file
+slug: Ndole_Special          # 4: uppercase and underscore
+title: Schema Errors
+description: Has a bad slug, an unknown key and a zero cook time.
+servings: 2
+prep_time: 5
+cook_time: 0                 # 9: must be positive
+prep_notes: something        # 8: unknown key rejected by .strict()
+author: Fixture
+tags: [main-course]
+ingredients:
+  - { name: salt, quantity: 1, unit: tsp }
+steps:
+  - actions: [Stir the salt into water.]

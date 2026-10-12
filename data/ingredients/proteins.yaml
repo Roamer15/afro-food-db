@@ -1,0 +1,12 @@
+- name: beef
+  category: meat
+  aliases: [boeuf, stewing beef]
+- name: chicken
+  category: meat
+  aliases: [poulet]
+- name: dried shrimp
+  category: seafood
+  aliases: [crayfish, dried crayfish]
+- name: smoked fish
+  category: fish
+  aliases: [smoked mackerel]

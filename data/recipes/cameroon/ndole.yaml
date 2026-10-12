@@ -1,0 +1,50 @@
+slug: ndole
+title: Ndolé
+description: Cameroon's national dish. Bitterleaf simmered with ground groundnuts, beef and dried shrimp in a rich, savoury, creamy stew, traditionally served with plantain or bobolo.
+region: Littoral
+servings: 6
+prep_time: 45
+cook_time: 90
+difficulty: medium
+author: Afro Food DB contributors
+tags: [main-course, stew, cameroonian, west-african, contains-nuts, festive]
+ingredients:
+  - { name: beef, quantity: 600, unit: g, notes: cut into bite-size cubes }
+  - { name: bitterleaf, quantity: 500, unit: g, notes: washed and boiled until tender }
+  - { name: groundnuts, quantity: 300, unit: g, notes: "raw, skinned" }
+  - { name: dried shrimp, quantity: 60, unit: g, notes: ground }
+  - { name: onion, quantity: 2, unit: medium }
+  - { name: garlic, quantity: 6, unit: cloves }
+  - { name: ginger, quantity: 30, unit: g, notes: peeled }
+  - { name: palm oil, quantity: 100, unit: ml }
+  - { name: stock cube, quantity: 2, unit: cubes }
+  - { name: salt, quantity: 1, unit: tsp, notes: to taste }
+  - { name: water, quantity: 1.5, unit: litres }
+steps:
+  - title: Prepare the leaves
+    actions:
+      - Wash the bitterleaf thoroughly in several changes of water, rubbing the leaves to release bitterness.
+      - Boil in unsalted water for 15 to 20 minutes, drain, squeeze out excess water and set aside.
+  - title: Make the groundnut paste
+    actions:
+      - Boil the groundnuts for 10 minutes, drain and rinse off the skins.
+      - Blend with one onion, half the garlic, half the ginger and a little water into a smooth paste.
+  - title: Cook the beef
+    actions:
+      - Blend the remaining onion, garlic and ginger and place in a pot with the beef, one stock cube, salt and 500 ml water.
+      - Simmer for 40 to 50 minutes until the beef is tender.
+  - title: Build the sauce
+    actions:
+      - Stir the groundnut paste into the beef and its stock, adding the remaining water as needed.
+      - Simmer on low heat for 20 minutes, stirring often so the paste does not catch.
+  - title: Finish
+    actions:
+      - Add the bitterleaf, ground dried shrimp and the second stock cube.
+      - Heat the palm oil gently in a small pan, then stir it in and simmer 10 more minutes. Adjust salt.
+notes:
+  - note: Serve with boiled or fried plantain, bobolo or boiled rice.
+    note_type: pairing
+  - note: Ndolé tastes better the next day. Cool, refrigerate and reheat gently, adding a splash of water.
+    note_type: make-ahead
+  - note: If bitterleaf is unavailable, spinach gives a milder result.
+    note_type: substitution

@@ -1,0 +1,13 @@
+# Error 3: dup-slug-a.yaml and dup-slug-b.yaml share the slug "dup-slug"
+slug: dup-slug
+title: Duplicate Slug a
+description: A valid recipe whose slug is shared with another recipe file.
+servings: 2
+prep_time: 5
+cook_time: 10
+author: Fixture
+tags: [main-course]
+ingredients:
+  - { name: salt, quantity: 1, unit: tsp }
+steps:
+  - actions: [Stir the salt into water.]

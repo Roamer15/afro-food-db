@@ -1,0 +1,36 @@
+- name: onion
+  category: vegetable
+  aliases: [onions]
+- name: garlic
+  category: vegetable
+  aliases: [garlic cloves]
+- name: tomato
+  category: vegetable
+  aliases: [tomatoes]
+- name: bell pepper
+  category: vegetable
+  aliases: [sweet pepper, capsicum]
+- name: green beans
+  category: vegetable
+  aliases: [haricot vert, french beans]
+- name: carrot
+  category: vegetable
+  aliases: [carrots]
+- name: leek
+  category: vegetable
+  aliases: []
+- name: celery
+  category: vegetable
+  aliases: []
+- name: scotch bonnet
+  category: vegetable
+  aliases: [habanero, piment]
+- name: ndole leaves
+  category: leaves
+  aliases: [bitterleaf, bitter leaf]
+- name: spinach
+  category: leaves
+  aliases: []
+- name: plantain
+  category: fruit
+  aliases: [plantains, ripe plantain]

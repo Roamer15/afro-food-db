@@ -1,0 +1,9 @@
+- name: onion
+  category: vegetable
+  aliases: [onions]
+- name: ndole leaves
+  category: leaves
+  aliases: [bitterleaf]
+- name: salt
+  category: seasoning
+  aliases: []

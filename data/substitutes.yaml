@@ -1,0 +1,27 @@
+- ingredient: ndole leaves
+  substitute: spinach
+  quality: acceptable
+  notes: Spinach is milder and lacks the bitterness; add it late and expect a gentler flavour.
+  is_bidirectional: false
+- ingredient: groundnuts
+  substitute: egusi
+  quality: good
+  notes: Ground egusi thickens the sauce in a similar way, with a slightly different nutty flavour.
+- ingredient: palm oil
+  substitute: vegetable oil
+  quality: acceptable
+  notes: The dish loses the red colour and the characteristic palm flavour.
+- ingredient: beef
+  substitute: chicken
+  quality: good
+  is_bidirectional: true
+- ingredient: dried shrimp
+  substitute: smoked fish
+- ingredient: groundnut oil
+  substitute: vegetable oil
+  quality: ideal
+  is_bidirectional: true
+- ingredient: maggi
+  substitute: salt
+  quality: last-resort
+  notes: Use salt only; you lose the savoury depth of a stock cube.

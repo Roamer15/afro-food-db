@@ -1,0 +1,15 @@
+# Errors 2, 5, 7: schema-valid, but fail the cross-file checks in validate.ts
+slug: semantic-errors
+title: Semantic Errors
+description: Unknown ingredient, unknown tag and a duplicate ingredient via alias.
+servings: 2
+prep_time: 5
+cook_time: 10
+author: Fixture
+tags: [main-course, vegan-ish]   # 5: not in tags.yaml
+ingredients:
+  - { name: unobtainium root, quantity: 1, unit: piece }   # 2: does not exist
+  - { name: onion, quantity: 1, unit: piece }
+  - { name: onions, quantity: 2, unit: piece }             # 7: alias of onion
+steps:
+  - actions: [Combine everything.]

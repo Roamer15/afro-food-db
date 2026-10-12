@@ -1,0 +1,38 @@
+slug: puff-puff
+title: Puff-Puff
+description: Soft, golden, slightly sweet fried dough balls, a beloved street snack across Cameroon and West Africa. Easy to make with pantry staples.
+servings: 6
+prep_time: 75
+cook_time: 20
+difficulty: easy
+author: Afro Food DB contributors
+tags: [snack, street-food, vegan, dairy-free, fried, cameroonian]
+ingredients:
+  - { name: flour, quantity: 500, unit: g }
+  - { name: sugar, quantity: 80, unit: g }
+  - { name: yeast, quantity: 7, unit: g, notes: one sachet instant yeast }
+  - { name: water, quantity: 450, unit: ml, notes: lukewarm }
+  - { name: salt, quantity: 0.5, unit: tsp }
+  - { name: nutmeg, quantity: 0.5, unit: tsp, is_optional: true, notes: freshly grated }
+  - { name: vegetable oil, quantity: 1, unit: litre, notes: for deep frying }
+steps:
+  - title: Mix the batter
+    actions:
+      - Combine the flour, sugar, yeast, salt and nutmeg in a large bowl.
+      - Gradually add the lukewarm water, whisking to a thick, smooth, stretchy batter.
+  - title: Prove
+    actions:
+      - Cover the bowl and leave in a warm place for 1 hour until doubled and bubbly.
+  - title: Heat the oil
+    actions:
+      - Heat the oil in a deep pot to about 180 C. A drop of batter should rise and sizzle immediately.
+  - title: Fry
+    actions:
+      - Scoop the batter with a wet hand and squeeze small balls off into the oil, a few at a time.
+      - Fry for 3 to 4 minutes, turning, until evenly golden brown.
+  - title: Drain and serve
+    actions:
+      - Lift out with a slotted spoon, drain on paper towels and serve warm.
+notes:
+  - note: Do not overcrowd the pot or the oil temperature drops and the puff-puff turns greasy.
+    note_type: general

@@ -1,0 +1,54 @@
+slug: poulet-dg
+title: Poulet DG
+description: A festive Cameroonian classic of fried chicken tossed with golden fried plantain and sautéed vegetables in a lightly spiced, savoury sauce. DG stands for Directeur Général.
+region: Centre
+servings: 4
+prep_time: 30
+cook_time: 50
+difficulty: medium
+author: Afro Food DB contributors
+source_url: https://en.wikipedia.org/wiki/Poulet_DG
+tags: [main-course, chicken, cameroonian, festive, fried]
+ingredients:
+  - { name: chicken, quantity: 1.2, unit: kg, notes: cut into pieces }
+  - { name: plantain, quantity: 3, unit: ripe, notes: peeled and cut into thick slices }
+  - { name: carrot, quantity: 2, unit: medium, notes: cut into batons }
+  - { name: green beans, quantity: 150, unit: g, notes: trimmed and halved }
+  - { name: bell pepper, quantity: 1, unit: large, notes: sliced }
+  - { name: onion, quantity: 2, unit: medium, notes: sliced }
+  - { name: garlic, quantity: 4, unit: cloves, notes: minced }
+  - { name: tomato, quantity: 3, unit: medium, notes: chopped }
+  - { name: leek, quantity: 1, unit: stalk, notes: sliced }
+  - { name: celery, quantity: 2, unit: stalks, notes: chopped }
+  - { name: vegetable oil, quantity: 400, unit: ml, notes: for frying }
+  - { name: stock cube, quantity: 2, unit: cubes }
+  - { name: salt, quantity: 1, unit: tsp, notes: to taste }
+  - { name: white pepper, quantity: 0.5, unit: tsp }
+steps:
+  - title: Cook the chicken
+    actions:
+      - Place the chicken in a pot with half the onion, half the garlic, one stock cube, salt and just enough water to cover.
+      - Simmer for 25 minutes until cooked through, then drain and reserve the stock.
+  - title: Fry the chicken
+    actions:
+      - Heat the oil in a deep pan and fry the chicken in batches until golden and crisp, about 5 minutes per batch.
+      - Remove and set aside, then pour off the oil into a bowl.
+  - title: Fry the plantain
+    actions:
+      - Reheat the oil and fry the plantain slices until deep golden, about 3 to 4 minutes per side.
+      - Drain on paper towels.
+  - title: Prepare the vegetables
+    actions:
+      - Blanch the carrots and green beans in boiling salted water for 3 minutes, then drain.
+      - Fry the blanched vegetables briefly in a little oil for 2 minutes and set aside.
+  - title: Make the sauce
+    actions:
+      - In 3 tablespoons of the frying oil, sauté the remaining onion, garlic, leek and celery for 3 minutes.
+      - Add the tomatoes, bell pepper, second stock cube, white pepper and 150 ml of reserved stock, and cook for 8 minutes.
+  - title: Combine
+    actions:
+      - Add the fried chicken, plantain and vegetables to the sauce.
+      - Toss gently over medium heat for 3 to 4 minutes, adjust salt and serve hot.
+notes:
+  - note: Serve as a complete meal, or with boiled rice or extra fried plantain.
+    note_type: pairing
