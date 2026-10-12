@@ -13,7 +13,7 @@ tags: [main-course, spicy, boiled, braised, dairy-free]
 ingredients:
   - { name: corn flour, quantity: 500, unit: g, notes: fine ground }
   - { name: water, quantity: 2, unit: l, notes: for the fufu }
-  - { name: njama njama, quantity: 4, unit: bunch, notes: "picked, washed and tough stems removed" }
+  - { name: njama njama, quantity: 3, unit: kg, notes: "picked, washed and tough stems removed" }
   - { name: tomato, quantity: 4, unit: piece, notes: "roma, diced" }
   - { name: onion, quantity: 1, unit: piece, notes: "small, sliced into julienne" }
   - { name: scotch bonnet, quantity: 2, unit: piece, notes: left whole with the stalks on }
