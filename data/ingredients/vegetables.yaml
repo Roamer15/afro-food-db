@@ -34,3 +34,6 @@
 - name: plantain
   category: fruit
   aliases: [plantains]
+- name: njama njama
+  category: leaves
+  aliases: [huckleberry leaves, african nightshade]
