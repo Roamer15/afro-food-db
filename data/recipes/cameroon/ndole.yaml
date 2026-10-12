@@ -1,25 +1,26 @@
 slug: ndole
 title: Ndolé
 description: Cameroon's national dish. Bitterleaf simmered with ground groundnuts, beef and dried shrimp in a rich, savoury, creamy stew, traditionally served with plantain or bobolo.
+country: Cameroon
 region: Littoral
 servings: 6
 prep_time: 45
 cook_time: 90
 difficulty: medium
 author: Afro Food DB contributors
-tags: [main-course, stew, cameroonian, west-african, contains-nuts, festive]
+tags: [main-course, stew, contains-nuts, festive]
 ingredients:
   - { name: beef, quantity: 600, unit: g, notes: cut into bite-size cubes }
   - { name: bitterleaf, quantity: 500, unit: g, notes: washed and boiled until tender }
   - { name: groundnuts, quantity: 300, unit: g, notes: "raw, skinned" }
   - { name: dried shrimp, quantity: 60, unit: g, notes: ground }
-  - { name: onion, quantity: 2, unit: medium }
-  - { name: garlic, quantity: 6, unit: cloves }
+  - { name: onion, quantity: 2, unit: piece, notes: medium }
+  - { name: garlic, quantity: 6, unit: clove }
   - { name: ginger, quantity: 30, unit: g, notes: peeled }
   - { name: palm oil, quantity: 100, unit: ml }
-  - { name: stock cube, quantity: 2, unit: cubes }
+  - { name: stock cube, quantity: 2, unit: cube }
   - { name: salt, quantity: 1, unit: tsp, notes: to taste }
-  - { name: water, quantity: 1.5, unit: litres }
+  - { name: water, quantity: 1.5, unit: l }
 steps:
   - title: Prepare the leaves
     actions:

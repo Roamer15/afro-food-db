@@ -1,6 +1,7 @@
 slug: poulet-dg
 title: Poulet DG
 description: A festive Cameroonian classic of fried chicken tossed with golden fried plantain and sautéed vegetables in a lightly spiced, savoury sauce. DG stands for Directeur Général.
+country: Cameroon
 region: Centre
 servings: 4
 prep_time: 30
@@ -8,20 +9,20 @@ cook_time: 50
 difficulty: medium
 author: Afro Food DB contributors
 source_url: https://en.wikipedia.org/wiki/Poulet_DG
-tags: [main-course, chicken, cameroonian, festive, fried]
+tags: [main-course, chicken, festive, fried]
 ingredients:
   - { name: chicken, quantity: 1.2, unit: kg, notes: cut into pieces }
-  - { name: plantain, quantity: 3, unit: ripe, notes: peeled and cut into thick slices }
-  - { name: carrot, quantity: 2, unit: medium, notes: cut into batons }
+  - { name: plantain, quantity: 3, unit: piece, notes: "ripe, peeled and cut into thick slices" }
+  - { name: carrot, quantity: 2, unit: piece, notes: "medium, cut into batons" }
   - { name: green beans, quantity: 150, unit: g, notes: trimmed and halved }
-  - { name: bell pepper, quantity: 1, unit: large, notes: sliced }
-  - { name: onion, quantity: 2, unit: medium, notes: sliced }
-  - { name: garlic, quantity: 4, unit: cloves, notes: minced }
-  - { name: tomato, quantity: 3, unit: medium, notes: chopped }
+  - { name: bell pepper, quantity: 1, unit: piece, notes: "large, sliced" }
+  - { name: onion, quantity: 2, unit: piece, notes: "medium, sliced" }
+  - { name: garlic, quantity: 4, unit: clove, notes: minced }
+  - { name: tomato, quantity: 3, unit: piece, notes: "medium, chopped" }
   - { name: leek, quantity: 1, unit: stalk, notes: sliced }
-  - { name: celery, quantity: 2, unit: stalks, notes: chopped }
+  - { name: celery, quantity: 2, unit: stalk, notes: chopped }
   - { name: vegetable oil, quantity: 400, unit: ml, notes: for frying }
-  - { name: stock cube, quantity: 2, unit: cubes }
+  - { name: stock cube, quantity: 2, unit: cube }
   - { name: salt, quantity: 1, unit: tsp, notes: to taste }
   - { name: white pepper, quantity: 0.5, unit: tsp }
 steps:

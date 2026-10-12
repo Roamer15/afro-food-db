@@ -1,0 +1,13 @@
+# Error 12: the required `country` field is absent
+slug: missing-country
+title: Missing Country
+description: Omits the required country field.
+servings: 2
+prep_time: 5
+cook_time: 10
+author: Fixture
+tags: [main-course]
+ingredients:
+  - { name: salt, quantity: 1, unit: tsp }
+steps:
+  - actions: [Stir the salt into water.]

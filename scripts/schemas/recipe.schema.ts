@@ -1,11 +1,11 @@
 import { z } from 'zod';
-import { DifficultySchema, NoteTypeSchema } from './enums.js';
+import { DifficultySchema, NoteTypeSchema, UnitSchema } from './enums.js';
 
 const RecipeIngredientSchema = z
   .object({
     name: z.string().trim().toLowerCase().min(1),
     quantity: z.number().positive().nullable().optional(),
-    unit: z.string().nullable().optional(),
+    unit: UnitSchema.nullable().optional(),
     is_optional: z.boolean().default(false),
     notes: z.string().nullable().optional(),
   })
@@ -33,6 +33,7 @@ export const RecipeSchema = z
     }),
     title: z.string().trim().min(2).max(100),
     description: z.string().max(220).min(1),
+    country: z.string().trim().min(1),
     region: z.string().min(1).optional(),
     servings: z
       .number()

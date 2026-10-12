@@ -24,7 +24,7 @@
   aliases: []
 - name: scotch bonnet
   category: vegetable
-  aliases: [habanero, piment]
+  aliases: [piment,cameroon pepper]
 - name: ndole leaves
   category: leaves
   aliases: [bitterleaf, bitter leaf]
@@ -33,4 +33,4 @@
   aliases: []
 - name: plantain
   category: fruit
-  aliases: [plantains, ripe plantain]
+  aliases: [plantains]

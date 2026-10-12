@@ -1,12 +1,13 @@
 slug: puff-puff
 title: Puff-Puff
 description: Soft, golden, slightly sweet fried dough balls, a beloved street snack across Cameroon and West Africa. Easy to make with pantry staples.
+country: Cameroon
 servings: 6
 prep_time: 75
 cook_time: 20
 difficulty: easy
 author: Afro Food DB contributors
-tags: [snack, street-food, vegan, dairy-free, fried, cameroonian]
+tags: [snack, street-food, vegan, dairy-free, fried]
 ingredients:
   - { name: flour, quantity: 500, unit: g }
   - { name: sugar, quantity: 80, unit: g }
@@ -14,7 +15,7 @@ ingredients:
   - { name: water, quantity: 450, unit: ml, notes: lukewarm }
   - { name: salt, quantity: 0.5, unit: tsp }
   - { name: nutmeg, quantity: 0.5, unit: tsp, is_optional: true, notes: freshly grated }
-  - { name: vegetable oil, quantity: 1, unit: litre, notes: for deep frying }
+  - { name: vegetable oil, quantity: 1, unit: l, notes: for deep frying }
 steps:
   - title: Mix the batter
     actions:
