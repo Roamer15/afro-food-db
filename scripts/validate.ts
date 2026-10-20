@@ -1,12 +1,10 @@
-// scripts/validate.ts
-import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { parse } from 'yaml';
-import { z } from 'zod';
 import { IngredientFileSchema } from './schemas/ingredient.schema.js';
 import { RecipeSchema } from './schemas/recipe.schema.js';
 import { TagFileSchema } from './schemas/tag.schema.js';
 import { IngredientSubstituteFileSchema } from './schemas/substitute.schema.js';
+import { yamlFiles } from './lib/lib-data.js';
+import { load } from './lib/lib-data.js';
 
 type Problem = { file: string; message: string };
 const problems: Problem[] = [];
@@ -21,51 +19,7 @@ const escapeData = (s: string) =>
 const escapeProp = (s: string) =>
   escapeData(s).replace(/:/g, '%3A').replace(/,/g, '%2C');
 
-// Parse a YAML file and validate it; record problems instead of throwing.
-function load<T extends z.ZodType>(file: string, schema: T): z.infer<T> | null {
-  let text: string;
-  try {
-    text = readFileSync(file, 'utf8');
-  } catch (e) {
-    const message =
-      (e as NodeJS.ErrnoException).code === 'ENOENT'
-        ? 'File not found'
-        : `Cannot read file: ${(e as Error).message}`;
-    problems.push({ file, message });
-    return null;
-  }
-  let raw: unknown;
-  try {
-    raw = parse(text);
-  } catch (e) {
-    problems.push({ file, message: `Invalid YAML: ${(e as Error).message}` });
-    return null;
-  }
-  const result = schema.safeParse(raw);
-  if (!result.success) {
-    for (const issue of result.error.issues) {
-      const where = issue.path.join('.') || '(root)';
-      problems.push({ file, message: `${where}: ${issue.message}` });
-    }
-    return null;
-  }
-  return result.data;
-}
 
-function yamlFiles(dir: string): string[] {
-  let entries: string[];
-  try {
-    entries = readdirSync(dir, { recursive: true, encoding: 'utf8' });
-  } catch (e) {
-    const message =
-      (e as NodeJS.ErrnoException).code === 'ENOENT'
-        ? 'Missing directory'
-        : `Cannot read directory: ${(e as Error).message}`;
-    problems.push({ file: dir, message });
-    return [];
-  }
-  return entries.filter((f) => f.endsWith('.yaml')).map((f) => join(dir, f));
-}
 
 // 1. Ingredients: map every name and alias to its canonical name.
 const lookup = new Map<string, string>();
